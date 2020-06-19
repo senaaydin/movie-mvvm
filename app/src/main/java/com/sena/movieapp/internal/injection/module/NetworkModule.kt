@@ -1,5 +1,6 @@
 package com.sena.movieapp.internal.injection.module
 
+import com.sena.movieapp.api.MovieService
 import com.sena.movieapp.util.TokenInterceptor
 import dagger.Module
 import dagger.Provides
@@ -33,8 +34,8 @@ class NetworkModule{
         tokenInterceptor: TokenInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(logInterceptor)
             .addInterceptor(tokenInterceptor)
+            .addInterceptor(logInterceptor)
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
@@ -55,6 +56,12 @@ class NetworkModule{
             .baseUrl("http://api.themoviedb.org/")
             .addConverterFactory(converter)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideMovieApi(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
     }
 
 }
