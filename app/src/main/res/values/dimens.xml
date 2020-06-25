@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="rv_item_margin">4dp</dimen>
+    <dimen name="padding_popular_movie_drawable">5dp</dimen>
+    <dimen name="padding_horizontal_chip">10dp</dimen>
+    <dimen name="padding_vertical_chip">4dp</dimen>
 </resources>

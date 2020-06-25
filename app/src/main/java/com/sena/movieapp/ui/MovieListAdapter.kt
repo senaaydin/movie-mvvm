@@ -12,6 +12,7 @@ import com.sena.movieapp.data.model.getPosterUrl
 import com.sena.movieapp.util.formatDate
 import com.sena.movieapp.util.loadFromUrl
 import kotlinx.android.synthetic.main.item_movie.view.*
+import kotlinx.android.synthetic.main.item_popular_movie.view.*
 
 class MovieListAdapter : ListAdapter<MovieResponseModel, MovieListAdapter.ViewHolder>(
     DiffUtilCallback()
@@ -19,7 +20,7 @@ class MovieListAdapter : ListAdapter<MovieResponseModel, MovieListAdapter.ViewHo
     private lateinit var listener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_popular_movie, parent, false)
         return ViewHolder(view)
     }
 
@@ -31,10 +32,10 @@ class MovieListAdapter : ListAdapter<MovieResponseModel, MovieListAdapter.ViewHo
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(movie: MovieResponseModel) {
-            itemView.image.loadFromUrl(movie.getPosterUrl())
-            itemView.title_tv.text = movie.title
-            itemView.release_date_tv.text = movie.releaseDate?.formatDate() ?: "-"
-            itemView.vote_average_tv.text = "Rating: ${movie.voteAverage.toString()}"
+            itemView.image_view_poster.loadFromUrl(movie.getPosterUrl())
+            itemView.text_view_title.text = movie.title
+            itemView.text_view_release_date.text = movie.releaseDate?.formatDate() ?: "-"
+            itemView.text_view_average.text = "Rating: ${movie.voteAverage.toString()}"
             itemView.setOnClickListener { listener.onItemClicked(movie) }
         }
 
