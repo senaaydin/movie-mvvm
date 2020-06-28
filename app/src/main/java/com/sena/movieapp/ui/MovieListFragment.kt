@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sena.movieapp.R
@@ -65,7 +66,9 @@ class MovieListFragment : Fragment(), MovieListAdapter.OnItemClickListener{
     }
 
     override fun onItemClicked(movie: MovieResponseModel) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val action = MovieListFragmentDirections
+            .actionToMovieDetail(movie.id, movie.title)
+        findNavController().navigate(action)
     }
 
 }
