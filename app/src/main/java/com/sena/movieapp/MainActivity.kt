@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpNavigation() {
         val navGraphIds =
-            listOf(R.navigation.movie_graph)
+            listOf(R.navigation.movie_graph, R.navigation.show_graph)
 
         val controller = bottom_nav.setupWithNavController(
             navGraphIds = navGraphIds,
