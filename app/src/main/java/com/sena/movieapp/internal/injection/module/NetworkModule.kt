@@ -1,6 +1,7 @@
 package com.sena.movieapp.internal.injection.module
 
 import com.sena.movieapp.api.MovieService
+import com.sena.movieapp.api.ShowService
 import com.sena.movieapp.util.TokenInterceptor
 import dagger.Module
 import dagger.Provides
@@ -62,6 +63,12 @@ class NetworkModule{
     @Provides
     fun provideMovieApi(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideShowApi(retrofit: Retrofit): ShowService {
+        return retrofit.create(ShowService::class.java)
     }
 
 }
